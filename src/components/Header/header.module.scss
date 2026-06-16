@@ -1,0 +1,39 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 59px;
+  background-color: #fff;
+}
+.containerTitle{
+  display: flex;
+  align-items: center;
+  border-radius: 31px;
+  padding: 0 0 0 12px;
+  width: 200px;
+  height: 33px;
+  background-color: #f7f7f7;
+  margin-left: 20px;
+}
+.ButtonRoot{
+  width: 130px;
+  height: 40px;
+  margin-right: 20px;
+}
+.title{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 22px;
+}
+.titleSHOP{
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 21px;
+  padding: 3px 12px;
+  width: 80px;
+  height: 33px;
+  background-color: #54b46a;
+  color: #fff;
+  margin-left: 8px;
+}
