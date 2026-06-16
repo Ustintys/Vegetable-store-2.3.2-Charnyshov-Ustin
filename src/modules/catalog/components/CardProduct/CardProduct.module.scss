@@ -1,0 +1,39 @@
+.container {
+  border-radius: 24px;
+  width: 302px;
+  height: 414px;
+}
+.img{
+  margin: 16px auto 16px auto;
+  border-radius: 8px;
+  border-color: #fff;
+}
+.textName{
+  font-weight: 600;
+  font-size: 18px;
+}
+.textWeight{
+  font-weight: 600;
+  font-size: 14px;
+  color: #868e96;
+}
+.buttonCount{
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  color: #212529;
+}
+.price{
+  font-weight: 600;
+  font-size: 20px;
+}
+.groupPrice{
+  margin-top: 16px;
+}
+.buttonCart{
+  width: 190px;
+  height: 40px;
+  border-radius: 8px;
+  color: #3b944e;
+  background-color: #e7faeb;
+}
