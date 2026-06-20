@@ -53,13 +53,33 @@ function Catalog() {
     getData();
   },[]);
 
+  const [dataCardCart, setDataCardCart] = useState<Vegetables[]>([]);
+
+  function saveDataCard(id: number) {
+
+    let dataCard: Vegetables;
+
+    vegetables.map((vegetable) => {
+      if (vegetable.id === id) {
+        dataCard = {
+          id: vegetable.id,
+          name: vegetable.name,
+          wieght: vegetable.wieght,
+          price: vegetable.price,
+          image: vegetable.image,
+        }
+        setDataCardCart((prev) => [...prev, dataCard]);
+      }
+    })
+  }
+
     return (
       <div className={style.container}>
         <h1 className={style.title}>Catalog</h1>
         <div className={style.containerCard}>
           {vegetables.map((vegetable: Vegetables) => (
             <div key={vegetable.id}>
-              <CardProduct loading={loading} name={vegetable.name} price={vegetable.price} image={vegetable.image} wieght={vegetable.wieght} count={1} />
+              <CardProduct id={vegetable.id} saveDataCard={saveDataCard} loading={loading} name={vegetable.name} price={vegetable.price} image={vegetable.image} wieght={vegetable.wieght} count={1} />
             </div>
           ))}
         </div>

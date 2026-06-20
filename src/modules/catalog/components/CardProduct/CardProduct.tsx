@@ -13,15 +13,17 @@ import Cart from "../../../../assets/icons/Cart.svg?react";
 import style from "./CardProduct.module.scss";
 
 type CardProps = {
+  id: number;
   name: string;
   price: number;
   count?: number;
   image: string;
   wieght: string;
   loading: boolean;
+  saveDataCard: (id: number) => void;
 }
 
-function CardProduct ({ name, price, count, image, wieght, loading }: CardProps) {
+function CardProduct ({ name, price, count, image, wieght, loading, saveDataCard, id }: CardProps) {
   return (
     <>
       {loading ? (
@@ -54,7 +56,7 @@ function CardProduct ({ name, price, count, image, wieght, loading }: CardProps)
           </Group>
           <Group classNames={{root: style.groupPrice}} justify="space-between" >
             <Text classNames={{root: style.price}}>$ {price}</Text>
-            <Button classNames={{root: style.buttonCart}} rightSection={<Cart />} variant="light" color="#54b46a">Add to cart</Button>
+            <Button onClick={() => {saveDataCard(id)}} classNames={{root: style.buttonCart}} rightSection={<Cart />} variant="light" color="#54b46a">Add to cart</Button>
           </Group>
         </Card>
       )
