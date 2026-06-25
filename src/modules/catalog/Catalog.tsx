@@ -73,7 +73,7 @@ function Catalog() {
         })
       );
     } else {
-      setDataCardCart((prev) => [...prev, {...vegetable, quantity: 1,},]);
+      setDataCardCart((prev) => [...prev, {...vegetable, quantity: vegetable.quantity}]);
     }
   }
 

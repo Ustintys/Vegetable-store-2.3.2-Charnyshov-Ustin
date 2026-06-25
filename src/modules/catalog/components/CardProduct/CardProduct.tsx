@@ -51,14 +51,14 @@ function CardProduct ({ name, price, image, wieght, loading, saveDataCard, id, d
               <Text classNames={{root: style.textWeight}}>{wieght}</Text>
             </Group>
             <Group justify="flex-end" gap={10}>
-              <ActionIcon onClick={() => {decrease(id)}} classNames={{root: style.buttonCount}} variant="filled" color="#dee2e6">{<Minus />}</ActionIcon>
+              <ActionIcon data-testid="btn-decrease" onClick={() => {decrease(id)}} classNames={{root: style.buttonCount}} variant="filled" color="#dee2e6">{<Minus />}</ActionIcon>
               <Text>{quantity}</Text>
-              <ActionIcon onClick={() => {increase(id)}} classNames={{root: style.buttonCount}} variant="filled" color="#dee2e6">{<Plus />}</ActionIcon>
+              <ActionIcon data-testid="btn-increase" onClick={() => {increase(id)}} classNames={{root: style.buttonCount}} variant="filled" color="#dee2e6">{<Plus />}</ActionIcon>
             </Group>
           </Group>
           <Group classNames={{root: style.groupPrice}} justify="space-between" >
             <Text classNames={{root: style.price}}>$ {price}</Text>
-            <Button onClick={() => {saveDataCard(id)}} classNames={{root: style.buttonCart}} rightSection={<Cart />} variant="light" color="#54b46a">Add to cart</Button>
+            <Button data-testid="btn-addCart" onClick={() => {saveDataCard(id)}} classNames={{root: style.buttonCart}} rightSection={<Cart />} variant="light" color="#54b46a">Add to cart</Button>
           </Group>
         </Card>
       )
