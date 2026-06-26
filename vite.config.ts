@@ -11,5 +11,6 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/tests/App.test.tsx',
   },
+  base: '/Vegetable-store-2.3.2-Charnyshov-Ustin/'
 
 })
