@@ -17,7 +17,7 @@ type CardPopupCartProps = Vegetables & {
 };
 
 
-function CardPopupCart({image, wieght, name, price, quantity, id, decrease, increase}: CardPopupCartProps) {
+function CardPopupCart({image, wieght, name, price, quantity, id, decrease, increase,}: CardPopupCartProps) {
   return (
     <Card classNames={{root: style.cardRoot}}>
       <Group justify="space-between" >

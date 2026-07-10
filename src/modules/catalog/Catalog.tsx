@@ -7,11 +7,6 @@ import {VegetableContext} from "../../contexts/VegetableContext.tsx";
 
 function Catalog() {
 
-  const context = useContext(VegetableContext);
-  if (!context) return null;
-  const setDataCardCart = context.setDataCardCart;
-  const dataCardCart = context.dataCardCart;
-
   const skeleton = [];  // заглушка
   for (let i = 0; i < 8; i++) {
     skeleton.push(
@@ -54,6 +49,10 @@ function Catalog() {
     getData();
   },[]);
 
+  const context = useContext(VegetableContext);
+  if (!context) return null;
+  const {vegetableContextData, setVegetableContextData} = context;
+
 
   function saveDataCard(id: number) {
 
@@ -61,10 +60,10 @@ function Catalog() {
 
     if (!vegetable) return;
 
-    const existingItem = dataCardCart.find((item) => item.id === vegetable.id);
+    const existingItem = vegetableContextData.find((item) => item.id === vegetable.id);
 
     if (existingItem) {
-      setDataCardCart((prev) =>
+      setVegetableContextData((prev) =>
         prev.map((item) => {
           if (item.id === vegetable.id) {
             return {...item, quantity: item.quantity + vegetable.quantity };
@@ -73,7 +72,7 @@ function Catalog() {
         })
       );
     } else {
-      setDataCardCart((prev) => [...prev, {...vegetable, quantity: vegetable.quantity}]);
+      setVegetableContextData((prev) => [...prev, {...vegetable, quantity: vegetable.quantity}]);
     }
   }
 

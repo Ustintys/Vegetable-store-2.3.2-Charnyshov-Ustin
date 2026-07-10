@@ -14,22 +14,22 @@ function Cart() {
 
   const context = useContext(VegetableContext);
   if (!context) return null;
-  const vegetablesData = context.dataCardCart
-  const setVegetablesData = context.setDataCardCart
+  const { vegetableContextData, setVegetableContextData } = context
 
   function decrease(id: number) {
-    setVegetablesData((prev) => {
-      return prev.map((vegetable) => {
+    setVegetableContextData((prev) =>
+      prev.map((vegetable) => {
         if (vegetable.id === id) {
-          return {...vegetable, quantity: Math.max(1,  vegetable.quantity - 1)};
+          return {...vegetable, quantity: vegetable.quantity - 1};
         }
         return vegetable;
-      });
-    });
+      })
+        .filter((vegetable) => vegetable.quantity > 0)
+    );
   }
 
   function increase(id: number) {
-    setVegetablesData((prev) => {
+    setVegetableContextData((prev) => {
       return prev.map((vegetable) => {
         if(vegetable.id === id){
           return {...vegetable, quantity: vegetable.quantity + 1};
@@ -44,21 +44,21 @@ function Cart() {
     <Popover offset={20} shadow={'0 2px 8px 0 rgba(33, 37, 41, 0.08), 0 1px 2px 0 rgba(33, 37, 41, 0.1)'} classNames={{dropdown: style.dropdown}} >
       <Popover.Target >
         <Button data-testid="btn-cart" classNames={{root: style.ButtonRoot}} rightSection={<CartIcon />} variant="filled" color="#54b46a">
-          {(vegetablesData.length === 0) ? null : (
+          {(vegetableContextData.length === 0) ? null : (
             <div className={style.quantity}>
-              <Text classNames={{root: style.quantityText}}>{vegetablesData.length}</Text>
+              <Text classNames={{root: style.quantityText}}>{vegetableContextData.length}</Text>
             </div>
           )}
           Cart
         </Button>
       </Popover.Target>
-      {(vegetablesData.length === 0) ? (
+      {(vegetableContextData.length === 0) ? (
         <Popover.Dropdown >
           <Image src={cart_content} alt={'the cart is empty'} />
         </Popover.Dropdown>
       ) : (
         <Popover.Dropdown>
-          {vegetablesData.map((vegetable, index) => (
+          {vegetableContextData.map((vegetable, index) => (
             <div key={vegetable.id}>
               <CardPopupCart id={vegetable.id}
                              name={vegetable.name}
@@ -69,14 +69,14 @@ function Cart() {
                              increase={increase}
                              decrease={decrease}
               />
-              {(index != vegetablesData.length - 1) ? <Divider classNames={{root: style.dividerCard}} /> : null}
+              {(index != vegetableContextData.length - 1) ? <Divider classNames={{root: style.dividerCard}} /> : null}
             </div>
           ))}
           <Divider classNames={{root: style.divider}} />
           <Group justify='space-between'>
             <Text classNames={{root: style.textTotal}}>Total</Text>
             <Text classNames={{root: style.textTotal}}>
-              $ {vegetablesData.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+              $ {vegetableContextData.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
             </Text>
           </Group>
         </Popover.Dropdown>

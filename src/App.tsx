@@ -8,14 +8,10 @@ function App() {
 
   return (
       <MantineProvider>
-        {
-          <>
             <VegetableContextProvider>
               <Header/>
               <Catalog/>
             </VegetableContextProvider>
-          </>
-        }
       </MantineProvider>
   )}
 
